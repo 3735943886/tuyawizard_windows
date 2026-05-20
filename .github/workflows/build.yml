@@ -40,15 +40,19 @@ jobs:
           --collect-all rustuya
           run.py
 
+      - name: Package EXE as zip
+        shell: pwsh
+        run: Compress-Archive -Path dist/tuyawizard.exe -DestinationPath dist/tuyawizard-windows.zip -Force
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: tuyawizard-windows
-          path: dist/tuyawizard.exe
+          path: dist/tuyawizard-windows.zip
           if-no-files-found: error
 
       - name: Attach to GitHub Release
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/tuyawizard.exe
+          files: dist/tuyawizard-windows.zip
