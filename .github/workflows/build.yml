@@ -45,7 +45,7 @@ jobs:
         run: Compress-Archive -Path dist/tuyawizard.exe -DestinationPath dist/tuyawizard-windows.zip -Force
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: tuyawizard-windows
           path: dist/tuyawizard-windows.zip
